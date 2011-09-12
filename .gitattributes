@@ -1,0 +1,6 @@
+/include/gl.h -text
+/include/glaux.h -text
+/include/glu.h -text
+/lib/GLAUX.LIB -text
+/lib/GLU32.LIB -text
+/lib/OPENGL32.LIB -text
