@@ -16,6 +16,7 @@ This C++ exercise collection shows how Windows and OpenGL draw 2D geometry from 
 ### Features
 
 - **`primero`** · Radial lines and a triangle on a black background.
+- **`taller4`** · A grid comparing points, line strips and filled polygons.
 
 ### Requirements
 
@@ -32,16 +33,18 @@ MSBuild OpenGLExercises.sln /m:1 /t:Rebuild /p:Configuration=Release /p:Platform
 
 ### Usage
 
-Press Enter in the console for `primero`.
+Press Enter in the console for `primero` or any key in the console for `taller4`.
 
 ```powershell
 .\bin\primero\Release\primero.exe
+.\bin\taller4\Release\taller4.exe
 ```
 
 ### Project structure
 
 - `include/` and `lib/` · The Win32 SDK headers and import libraries from the course backup.
 - `primero/` · Radial lines and a triangle on a black background. Start with `primero/main.cpp`.
+- `taller4/` · A grid comparing points, line strips and filled polygons. Start with `taller4/main.cpp`.
 
 ### Contributing
 
@@ -76,6 +79,7 @@ Esta colección de ejercicios en C++ muestra cómo Windows y OpenGL dibujan figu
 ### Funciones
 
 - **`primero`** · Líneas radiales y un triángulo sobre fondo negro.
+- **`taller4`** · Una cuadrícula para comparar puntos, tiras de líneas y polígonos rellenos.
 
 ### Requisitos
 
@@ -92,16 +96,18 @@ MSBuild OpenGLExercises.sln /m:1 /t:Rebuild /p:Configuration=Release /p:Platform
 
 ### Uso
 
-Presiona Enter en la consola para `primero`.
+Presiona Enter en la consola para `primero` o cualquier tecla en la consola para `taller4`.
 
 ```powershell
 .\bin\primero\Release\primero.exe
+.\bin\taller4\Release\taller4.exe
 ```
 
 ### Estructura del proyecto
 
 - `include/` y `lib/` · Cabeceras y bibliotecas de enlace Win32 del respaldo del curso.
 - `primero/` · Líneas radiales y un triángulo sobre fondo negro. Empieza en `primero/main.cpp`.
+- `taller4/` · Una cuadrícula para comparar puntos, tiras de líneas y polígonos rellenos. Empieza en `taller4/main.cpp`.
 
 ### Contribuir
 

@@ -2,6 +2,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
 Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "primero", "primero\primero.vcxproj", "{E15EC4AD-3236-56D4-8BE7-DBC397EEE713}"
 EndProject
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "taller4", "taller4\primero.vcxproj", "{66EC138A-A310-56B4-80B4-270230A35E5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -12,5 +14,9 @@ Global
 		{E15EC4AD-3236-56D4-8BE7-DBC397EEE713}.Debug|Win32.Build.0 = Debug|Win32
 		{E15EC4AD-3236-56D4-8BE7-DBC397EEE713}.Release|Win32.ActiveCfg = Release|Win32
 		{E15EC4AD-3236-56D4-8BE7-DBC397EEE713}.Release|Win32.Build.0 = Release|Win32
+		{66EC138A-A310-56B4-80B4-270230A35E5D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{66EC138A-A310-56B4-80B4-270230A35E5D}.Debug|Win32.Build.0 = Debug|Win32
+		{66EC138A-A310-56B4-80B4-270230A35E5D}.Release|Win32.ActiveCfg = Release|Win32
+		{66EC138A-A310-56B4-80B4-270230A35E5D}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 EndGlobal
