@@ -17,6 +17,8 @@ This C++ exercise collection shows how Windows and OpenGL draw 2D geometry from 
 
 - **`primero`** · Radial lines and a triangle on a black background.
 - **`taller4`** · A grid comparing points, line strips and filled polygons.
+- **`taller5a`** · Colored primitives viewed under perspective projection.
+- **`taller5b`** · Coordinate axes and a radial drawing translated from the center.
 
 ### Requirements
 
@@ -33,11 +35,13 @@ MSBuild OpenGLExercises.sln /m:1 /t:Rebuild /p:Configuration=Release /p:Platform
 
 ### Usage
 
-Press Enter in the console for `primero` or any key in the console for `taller4`.
+Press Enter in the console for `primero` or any key in the console for `taller4`. Close the other exercise windows using the close button.
 
 ```powershell
 .\bin\primero\Release\primero.exe
 .\bin\taller4\Release\taller4.exe
+.\bin\taller5a\Release\taller5a.exe
+.\bin\taller5b\Release\taller5b.exe
 ```
 
 ### Project structure
@@ -45,6 +49,8 @@ Press Enter in the console for `primero` or any key in the console for `taller4`
 - `include/` and `lib/` · The Win32 SDK headers and import libraries from the course backup.
 - `primero/` · Radial lines and a triangle on a black background. Start with `primero/main.cpp`.
 - `taller4/` · A grid comparing points, line strips and filled polygons. Start with `taller4/main.cpp`.
+- `taller5a/` · Colored primitives viewed under perspective projection. Start with `taller5a/main.cpp`.
+- `taller5b/` · Coordinate axes and a radial drawing translated from the center. Start with `taller5b/main.cpp`.
 
 ### Contributing
 
@@ -80,6 +86,8 @@ Esta colección de ejercicios en C++ muestra cómo Windows y OpenGL dibujan figu
 
 - **`primero`** · Líneas radiales y un triángulo sobre fondo negro.
 - **`taller4`** · Una cuadrícula para comparar puntos, tiras de líneas y polígonos rellenos.
+- **`taller5a`** · Figuras de colores dibujadas con perspectiva.
+- **`taller5b`** · Ejes de coordenadas y un dibujo radial desplazado del centro.
 
 ### Requisitos
 
@@ -96,11 +104,13 @@ MSBuild OpenGLExercises.sln /m:1 /t:Rebuild /p:Configuration=Release /p:Platform
 
 ### Uso
 
-Presiona Enter en la consola para `primero` o cualquier tecla en la consola para `taller4`.
+Presiona Enter en la consola para `primero` o cualquier tecla en la consola para `taller4`. Usa el botón de cerrar en las demás ventanas.
 
 ```powershell
 .\bin\primero\Release\primero.exe
 .\bin\taller4\Release\taller4.exe
+.\bin\taller5a\Release\taller5a.exe
+.\bin\taller5b\Release\taller5b.exe
 ```
 
 ### Estructura del proyecto
@@ -108,6 +118,8 @@ Presiona Enter en la consola para `primero` o cualquier tecla en la consola para
 - `include/` y `lib/` · Cabeceras y bibliotecas de enlace Win32 del respaldo del curso.
 - `primero/` · Líneas radiales y un triángulo sobre fondo negro. Empieza en `primero/main.cpp`.
 - `taller4/` · Una cuadrícula para comparar puntos, tiras de líneas y polígonos rellenos. Empieza en `taller4/main.cpp`.
+- `taller5a/` · Figuras de colores dibujadas con perspectiva. Empieza en `taller5a/main.cpp`.
+- `taller5b/` · Ejes de coordenadas y un dibujo radial desplazado del centro. Empieza en `taller5b/main.cpp`.
 
 ### Contribuir
 

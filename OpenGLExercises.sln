@@ -4,6 +4,10 @@ Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "primero", "primero\primero.
 EndProject
 Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "taller4", "taller4\primero.vcxproj", "{66EC138A-A310-56B4-80B4-270230A35E5D}"
 EndProject
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "taller5a", "taller5a\primero.vcxproj", "{46C99F3E-9163-564C-99C6-42890D111E09}"
+EndProject
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "taller5b", "taller5b\primero.vcxproj", "{C9211090-D69F-5863-A646-546EF92F5F81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -18,5 +22,13 @@ Global
 		{66EC138A-A310-56B4-80B4-270230A35E5D}.Debug|Win32.Build.0 = Debug|Win32
 		{66EC138A-A310-56B4-80B4-270230A35E5D}.Release|Win32.ActiveCfg = Release|Win32
 		{66EC138A-A310-56B4-80B4-270230A35E5D}.Release|Win32.Build.0 = Release|Win32
+		{46C99F3E-9163-564C-99C6-42890D111E09}.Debug|Win32.ActiveCfg = Debug|Win32
+		{46C99F3E-9163-564C-99C6-42890D111E09}.Debug|Win32.Build.0 = Debug|Win32
+		{46C99F3E-9163-564C-99C6-42890D111E09}.Release|Win32.ActiveCfg = Release|Win32
+		{46C99F3E-9163-564C-99C6-42890D111E09}.Release|Win32.Build.0 = Release|Win32
+		{C9211090-D69F-5863-A646-546EF92F5F81}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C9211090-D69F-5863-A646-546EF92F5F81}.Debug|Win32.Build.0 = Debug|Win32
+		{C9211090-D69F-5863-A646-546EF92F5F81}.Release|Win32.ActiveCfg = Release|Win32
+		{C9211090-D69F-5863-A646-546EF92F5F81}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 EndGlobal
