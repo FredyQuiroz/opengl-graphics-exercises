@@ -4,14 +4,14 @@
 ## English
 
 
-Windows C++ exercises for drawing shapes with OpenGL
+Windows C++ exercises for drawing and transforming shapes with OpenGL
 
 > [!WARNING]
 > **Status: Legacy.** Windows exercises from 2011. Converted to MSVC v145 in 2026.
 
 ### Overview
 
-This C++ exercise collection shows how Windows and OpenGL draw 2D geometry from coordinates.
+These Windows exercises show how a C++ program turns coordinates into pixels with OpenGL. They form a progression from drawing lines and filled shapes to comparing transformations and animation.
 
 ### Features
 
@@ -19,6 +19,7 @@ This C++ exercise collection shows how Windows and OpenGL draw 2D geometry from 
 - **`taller4`** · A grid comparing points, line strips and filled polygons.
 - **`taller5a`** · Colored primitives viewed under perspective projection.
 - **`taller5b`** · Coordinate axes and a radial drawing translated from the center.
+- **`taller6`** · A triangle demonstration that animates translation, rotation and scaling.
 
 ### Requirements
 
@@ -42,6 +43,7 @@ Press Enter in the console for `primero` or any key in the console for `taller4`
 .\bin\taller4\Release\taller4.exe
 .\bin\taller5a\Release\taller5a.exe
 .\bin\taller5b\Release\taller5b.exe
+.\bin\taller6\Release\taller6.exe
 ```
 
 ### Project structure
@@ -51,6 +53,7 @@ Press Enter in the console for `primero` or any key in the console for `taller4`
 - `taller4/` · A grid comparing points, line strips and filled polygons. Start with `taller4/main.cpp`.
 - `taller5a/` · Colored primitives viewed under perspective projection. Start with `taller5a/main.cpp`.
 - `taller5b/` · Coordinate axes and a radial drawing translated from the center. Start with `taller5b/main.cpp`.
+- `taller6/` · A triangle demonstration that animates translation, rotation and scaling. Start with `taller6/main.cpp`.
 
 ### Contributing
 
@@ -73,14 +76,14 @@ The MIT license applies to the original exercise code and the 2026 build files a
 ## Español
 
 
-Ejercicios C++ para dibujar figuras con OpenGL en Windows
+Ejercicios C++ para dibujar y transformar figuras con OpenGL en Windows
 
 > [!WARNING]
 > **Estado: Legacy (histórico).** Ejercicios para Windows de 2011, convertidos a MSVC v145 en 2026.
 
 ### Descripción general
 
-Esta colección de ejercicios en C++ muestra cómo Windows y OpenGL dibujan figuras en 2D a partir de coordenadas.
+Estos ejercicios de Windows muestran cómo un programa de C++ convierte coordenadas en píxeles con OpenGL. Van del dibujo de líneas y formas rellenas a la comparación de transformaciones y la animación.
 
 ### Funciones
 
@@ -88,6 +91,7 @@ Esta colección de ejercicios en C++ muestra cómo Windows y OpenGL dibujan figu
 - **`taller4`** · Una cuadrícula para comparar puntos, tiras de líneas y polígonos rellenos.
 - **`taller5a`** · Figuras de colores dibujadas con perspectiva.
 - **`taller5b`** · Ejes de coordenadas y un dibujo radial desplazado del centro.
+- **`taller6`** · Una demostración que anima el desplazamiento, el giro y la escala de un triángulo.
 
 ### Requisitos
 
@@ -111,6 +115,7 @@ Presiona Enter en la consola para `primero` o cualquier tecla en la consola para
 .\bin\taller4\Release\taller4.exe
 .\bin\taller5a\Release\taller5a.exe
 .\bin\taller5b\Release\taller5b.exe
+.\bin\taller6\Release\taller6.exe
 ```
 
 ### Estructura del proyecto
@@ -120,6 +125,7 @@ Presiona Enter en la consola para `primero` o cualquier tecla en la consola para
 - `taller4/` · Una cuadrícula para comparar puntos, tiras de líneas y polígonos rellenos. Empieza en `taller4/main.cpp`.
 - `taller5a/` · Figuras de colores dibujadas con perspectiva. Empieza en `taller5a/main.cpp`.
 - `taller5b/` · Ejes de coordenadas y un dibujo radial desplazado del centro. Empieza en `taller5b/main.cpp`.
+- `taller6/` · Una demostración que anima el desplazamiento, el giro y la escala de un triángulo. Empieza en `taller6/main.cpp`.
 
 ### Contribuir
 
