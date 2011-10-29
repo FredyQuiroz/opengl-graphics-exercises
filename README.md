@@ -22,12 +22,15 @@ These Windows exercises show how a C++ program turns coordinates into pixels wit
 - **`taller6`** · A triangle demonstration that animates translation, rotation and scaling.
 - **`segundo`** · A 3DS aircraft viewer with several cameras, keyboard input and a speed display.
 
+This October 29 revision places the original author credit at the top of the 3DS window and shows speed at the bottom. The historical non-Debug code contains a fullscreen prompt. With MSVC v145, this revision builds in Debug and starts in a window.
+
 ### Requirements
 
 - On Windows, install [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/) with Desktop development with C++ and a Windows SDK. Use the Win32 target.
 - The archived Win32 OpenGL, GLU and GLAUX headers and libraries are included under include/ and lib/. The companion file lists their origin and hashes.
 - The Win32 GLUT and lib3ds headers and libraries from the archive are included under include/ and lib/. Copy the two DLLs from vendor/runtime/ beside segundo.exe. The archived lib3ds runtime uses the x86 Visual C++ 2008 SP1 runtime. [Microsoft provides that redistributable](https://www.microsoft.com/en-us/download/details.aspx?id=26368). [Upstream source for lib3ds 1.3.0](https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/lib3ds/lib3ds-1.3.0.zip) is available under LGPL-2.1-or-later.
 - The loader and the small accompanying modules are included in `segundo/`. See [Third-party notices](THIRD-PARTY-NOTICES.md) for their terms.
+
 
 ### Getting started
 
@@ -107,12 +110,15 @@ Estos ejercicios de Windows muestran cómo un programa de C++ convierte coordena
 - **`taller6`** · Una demostración que anima el desplazamiento, el giro y la escala de un triángulo.
 - **`segundo`** · Un visor de una aeronave 3DS con varias cámaras, controles de teclado e indicador de velocidad.
 
+En esta revisión del 29 de octubre el crédito original aparece arriba, y el indicador de velocidad, abajo. La rama histórica sin _DEBUG contiene una pregunta sobre pantalla completa. Con MSVC v145 esta revisión compila en Debug y abre en una ventana.
+
 ### Requisitos
 
 - En Windows, instala [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/) con Desarrollo para el escritorio con C++ y un SDK de Windows. Selecciona Win32.
 - Las cabeceras y bibliotecas Win32 archivadas de OpenGL, GLU y GLAUX están en include/ y lib/. Los avisos registran su origen y hashes.
 - Las cabeceras y bibliotecas Win32 archivadas de GLUT y lib3ds están en include/ y lib/. Copia las dos DLL de vendor/runtime/ junto a segundo.exe. La DLL archivada de lib3ds usa el runtime x86 de Visual C++ 2008 SP1. [Microsoft ofrece el redistribuible](https://www.microsoft.com/en-us/download/details.aspx?id=26368). El [código original de lib3ds 1.3.0](https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/lib3ds/lib3ds-1.3.0.zip) está disponible bajo LGPL-2.1 o posterior.
 - El cargador y los módulos auxiliares están incluidos en `segundo/`. Consulta los [avisos de terceros](THIRD-PARTY-NOTICES.md) para conocer sus condiciones.
+
 
 ### Cómo empezar
 

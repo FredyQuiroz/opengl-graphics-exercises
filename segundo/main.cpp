@@ -7,13 +7,7 @@
 # include "C3DsLoader.h"
 #include <math.h>
 # include "debug.h"
-
-#ifndef WIN32
-#include <unistd.h>
-#else
-#define random rand
-#define srandom srand
-#endif
+#include "LoadImg.h"
 
 #pragma comment(lib, "../lib/opengl32.lib")
 #pragma comment(lib, "../lib/GlAux.Lib")
@@ -22,8 +16,10 @@
 
 #include "../include/glut.h"
 
+
 FramerateDisplayer my_framerate;
 CText			m_pVelocidad;
+CText			m_pNombre;
 // funciones globales de animacion.
 GLfloat g_fTranslate=0;
 GLfloat g_fRotate=0;
@@ -104,8 +100,8 @@ void display (void) {
 	my_framerate.anotherFrameExecuted();
 	my_framerate.displayFramerate();
 	m_pVelocidad.Display();
+	m_pNombre.Display();
 
-	glFlush();
 	glutSwapBuffers();
 }
 
@@ -198,8 +194,15 @@ void main(int argc, char** argv)
 	glutInitWindowSize(640, 640);
 	glutCreateWindow("Taller 6");
 
+#ifndef _DEBUG
+	if(MessageBox(NULL, "¿Ejecutar en pantalla completa?", NULL, MB_YESNO)==IDYES)
+		glutFullScreen();
+#endif
+
 	my_framerate.init(0.05,GLUT_BITMAP_HELVETICA_18,1.0,0.0,0.0,0.05,0.95);
-	m_pVelocidad.init(GLUT_BITMAP_HELVETICA_18,1.0,0.0,0.0,0.05,0.90);
+	m_pVelocidad.init(GLUT_BITMAP_HELVETICA_18,1.0,0.0,0.0,0.05,0.05);
+	m_pNombre.init(GLUT_BITMAP_HELVETICA_18,0.0,0.0,1.0,0.65,0.95);
+	m_pNombre.SetText("Fredy G. Quiroz Rivera");
 
 	glClearColor(0.5, 0.5, 0.5, 1.0);
 	glShadeModel(GL_SMOOTH);

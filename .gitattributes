@@ -27,6 +27,9 @@
 /lib/OPENGL32.LIB -text
 /lib/glut32.lib -text
 /lib/lib3ds-1_3.lib -text
+/segundo/LoadImg.h -text
+/segundo/main.cpp -text
+/segundo/primero.vcxproj -text
 /vendor/runtime/glut32.dll -text
 /vendor/runtime/lib3ds-1_3.dll -text
 /LICENSES/3dsplay-notice.txt -text
