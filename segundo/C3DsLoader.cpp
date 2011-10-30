@@ -9,7 +9,7 @@
 #define	MAX(a,b) ((a)>(b)?(a):(b))
 #endif
 
-C3DsLoader::C3DsLoader(const char *filepath)
+C3DsLoader::C3DsLoader()
 {
 	camera=NULL;
 	gl_width= gl_height=0;
@@ -27,12 +27,21 @@ C3DsLoader::C3DsLoader(const char *filepath)
 	m_bAcelerando=false;
 	m_fDistacia=0;
 
-	decompose_datapath(filepath);
+  inicio= GetTickCount();
+}
 
-	file=lib3ds_file_load(filepath);
+C3DsLoader::~C3DsLoader(void)
+{
+}
+
+bool C3DsLoader::Load(const char *archivo) {
+
+	decompose_datapath(archivo);
+
+	file=lib3ds_file_load(archivo);
   if (!file) {
     puts("3dsplayer: Error: Loading 3DS file failed.\n");
-    exit(1);
+    return false;
   }
 
   /* No nodes?  Fabricate nodes to display all the meshes. */
@@ -70,7 +79,7 @@ C3DsLoader::C3DsLoader(const char *filepath)
     Lib3dsCamera *camera = lib3ds_camera_new("Camera_X");
     camera->target[0] = cx;
     camera->target[1] = cy;
-    camera->target[2] = cz;
+    camera->target[2] = cz+5000;
     memcpy(camera->position, camera->target, sizeof(camera->position));
     camera->position[0] = bmax[0] + 1.5 * MAX(sy,sz);
     camera->near_range = ( camera->position[0] - bmax[0] ) * .5;
@@ -83,7 +92,7 @@ C3DsLoader::C3DsLoader(const char *filepath)
     camera = lib3ds_camera_new("Camera_Y");
     camera->target[0] = cx;
     camera->target[1] = cy;
-    camera->target[2] = cz;
+    camera->target[2] = cz+5000;
     memcpy(camera->position, camera->target, sizeof(camera->position));
     camera->position[1] = bmin[1] - 1.5 * MAX(sx,sz);
     camera->near_range = ( bmin[1] - camera->position[1] ) * .5;
@@ -164,19 +173,14 @@ C3DsLoader::C3DsLoader(const char *filepath)
     fputs("3dsplayer: Error: No Camera found.\n", stderr);
     lib3ds_file_free(file);
     file=0;
-    exit(1);
+	return false;
   }
   if (!camera) {
     camera=file->cameras->name;
   }
 
   lib3ds_file_eval(file,0.);
-
-  inicio= GetTickCount();
-}
-
-C3DsLoader::~C3DsLoader(void)
-{
+  return true;
 }
 
 void C3DsLoader::SetDimensions(int h, int w) {
@@ -359,20 +363,21 @@ void C3DsLoader::render_node(Lib3dsNode *node)
 		// llantad, llantai, llantat
 		if(strcmp(node->name, "helice")==0) {
 
-			// glLoadIdentity();
-			m_fRotacionHelice= ((int)m_fRotacionHelice)%360;
-			glRotatef(m_fRotacionHelice,0,1,0);
-			if(m_fRotacionHelice<=120) {
-				float temp= m_fRotacionHelice*400/120;
-				glTranslatef(-d->pivot[0], -d->pivot[1]+m_fDistacia, -d->pivot[2]-temp+m_fVuelo);
-			} else if(m_fRotacionHelice<=240) {
-				float tempx=106 + ((m_fRotacionHelice-130)*144/110);
-				float tempz=313 - ((m_fRotacionHelice-130)*187/110);
-				glTranslatef(-d->pivot[0]+tempx, -d->pivot[1]+m_fDistacia, -d->pivot[2]-tempz+m_fVuelo);
-			} else {
-				float tempx=291 - ((m_fRotacionHelice-250)*236/100);
-				float tempz=19 + ((m_fRotacionHelice-250)*19/100);
-				glTranslatef(-d->pivot[0]+tempx, -d->pivot[1]+m_fDistacia, -d->pivot[2]-tempz+m_fVuelo);
+			if(m_fVuelo==0) {
+				m_fRotacionHelice= ((int)m_fRotacionHelice)%360;
+				glRotatef(m_fRotacionHelice,0,1,0);
+				if(m_fRotacionHelice<=120) {
+					float temp= m_fRotacionHelice*400/120;
+					glTranslatef(-d->pivot[0], -d->pivot[1]+m_fDistacia, -d->pivot[2]-temp+m_fVuelo);
+				} else if(m_fRotacionHelice<=240) {
+					float tempx=106 + ((m_fRotacionHelice-130)*144/110);
+					float tempz=313 - ((m_fRotacionHelice-130)*187/110);
+					glTranslatef(-d->pivot[0]+tempx, -d->pivot[1]+m_fDistacia, -d->pivot[2]-tempz+m_fVuelo);
+				} else {
+					float tempx=291 - ((m_fRotacionHelice-250)*236/100);
+					float tempz=19 + ((m_fRotacionHelice-250)*19/100);
+					glTranslatef(-d->pivot[0]+tempx, -d->pivot[1]+m_fDistacia, -d->pivot[2]-tempz+m_fVuelo);
+				}
 			}
 		} else if(strcmp(node->name, "llantad")==0 || strcmp(node->name, "llantah")==0 || strcmp(node->name, "llantat")==0) {
 
@@ -435,8 +440,10 @@ void C3DsLoader::OnIdle() {
 
 void C3DsLoader::DesAcelerar(bool freno/*=false*/) {
 
-	if(m_fVelocidad==0) 
+	if(m_fVelocidad==0) {
+		m_dwInicioAceleracion= GetTickCount();
 		return;
+	}
 
 	if(m_fVelocidad>VELOCIDAD_DESPEGUE) {// ya despega
 
@@ -501,7 +508,7 @@ void C3DsLoader::light_update(Lib3dsLight *l)
 
 void C3DsLoader::Draw() {
 	
-	Lib3dsNode *c,*t;
+  Lib3dsNode *c,*t;
   Lib3dsFloat fov, roll;
   float fnear, ffar, dist;
   float *campos;
@@ -510,21 +517,6 @@ void C3DsLoader::Draw() {
   Lib3dsCamera *cam;
   Lib3dsVector v;
   Lib3dsNode *p;
-
-  if( file != NULL && file->background.solid.use )
-    glClearColor(file->background.solid.col[0],
-    file->background.solid.col[1],
-    file->background.solid.col[2], 1.);
-
-  /* TODO: fog */
-
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-  /*if( anti_alias )
-    glEnable(GL_POLYGON_SMOOTH);
-  else*/
-    glDisable(GL_POLYGON_SMOOTH);
-
 
   if (!file) {
     return;
@@ -573,7 +565,7 @@ void C3DsLoader::Draw() {
   */
   if( fnear <= 0. ) fnear = ffar * .001;
 
-  gluPerspective( fov-view_camera_zoom, 1.0*gl_width/gl_height, fnear, ffar);
+  gluPerspective( fov-view_camera_zoom, 1.0*gl_width/gl_height, fnear, ffar+TAMANO_PISTA); // el foco lejano de la camara
 
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
@@ -639,8 +631,6 @@ void C3DsLoader::Draw() {
 
 		render_node(p);
     }
-
-  // glutSwapBuffers();
 }
 
 void C3DsLoader::decompose_datapath(const char *fn)
@@ -671,6 +661,11 @@ void C3DsLoader::SetCamara(const char *camara) {
 		}
 		c= c->next;
 	}
+}
+
+const char *C3DsLoader::GetCamara() const {
+
+	return camera;
 }
 
 float C3DsLoader::GetDistanciaRecorrida() const {

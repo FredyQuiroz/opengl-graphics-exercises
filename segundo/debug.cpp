@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+# ifdef _DEBUG
 void TRACE(const char* format,...)
 {
  va_list args;
@@ -20,3 +21,4 @@ void TRACE(const char* format,...)
 
  _RPT0(_CRT_WARN,szBuffer);
 }
+#endif

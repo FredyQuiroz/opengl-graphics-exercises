@@ -64,15 +64,17 @@ public:
 	float x;
 	float z;
 
-	C3DsLoader(const char *filepath);
+	C3DsLoader();
 	~C3DsLoader(void);
 	void Draw();
 	void SetDimensions(int h, int w);
 	void OnIdle();
 	void SetCamara(const char *camara);
+	const char *GetCamara() const;
 	void Acelerar();
 	void DesAcelerar(bool freno=false);
 	float GetVelocidad() const;
 	float GetDistanciaRecorrida() const;
+	bool Load(const char *archivo);
 	void Reset();
 };

@@ -12,6 +12,7 @@ _RPT0(_CRT_WARN,szBuffer); \
 Trace
 
 #else
- inline void TRACE(0);
- inline void TRACEEX(0);
+# define TRACE(x)
+ // void TRACE(0);
+ // void TRACEEX(0);
 #endif

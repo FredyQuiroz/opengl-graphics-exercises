@@ -4,7 +4,7 @@
 ## English
 
 
-Windows C++ exercises for drawing with OpenGL and viewing a 3DS model
+Legacy Windows C++ exercises for drawing, animating and rendering 3D scenes with OpenGL
 
 > [!WARNING]
 > **Status: Legacy.** Windows exercises from 2011. Converted to MSVC v145 in 2026.
@@ -22,8 +22,6 @@ These Windows exercises show how a C++ program turns coordinates into pixels wit
 - **`taller6`** · A triangle demonstration that animates translation, rotation and scaling.
 - **`segundo`** · A 3DS aircraft viewer with several cameras, keyboard input and a speed display.
 
-This October 29 revision places the original author credit at the top of the 3DS window and shows speed at the bottom. The historical non-Debug code contains a fullscreen prompt. With MSVC v145, this revision builds in Debug and starts in a window.
-
 ### Requirements
 
 - On Windows, install [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/) with Desktop development with C++ and a Windows SDK. Use the Win32 target.
@@ -32,28 +30,30 @@ This October 29 revision places the original author credit at the top of the 3DS
 - The loader and the small accompanying modules are included in `segundo/`. See [Third-party notices](THIRD-PARTY-NOTICES.md) for their terms.
 
 
+The restored October skybox uses the six fictional BMP textures in demo/. No other skybox files are needed.
+
 ### Getting started
 
 Build the solution in a Developer PowerShell for Visual Studio at the project root.
 
 ```powershell
-MSBuild OpenGLExercises.sln /m:1 /t:Rebuild /p:Configuration=Debug /p:Platform=Win32 /p:PreferredToolArchitecture=x64
+MSBuild OpenGLExercises.sln /m:1 /t:Rebuild /p:Configuration=Release /p:Platform=Win32 /p:PreferredToolArchitecture=x64
 ```
 
 ### Usage
 
-Press Enter in the console for `primero` or any key in the console for `taller4`. Close the other exercise windows using the close button. Build this snapshot as Debug. The archived Trace macro definitions for Release fail with MSVC v145. Once the runtime DLLs are in place, use the included synthetic 3DS sample. Press X, Y, Z or I for camera views, Right to accelerate, Left to brake before takeoff, Up or Down to zoom and Esc to close. Drag with the mouse to rotate the view.
+Press Enter in the console for `primero` or any key in the console for `taller4`. Close the other exercise windows using the close button. Once the runtime DLLs are in place, use the included synthetic 3DS sample. Press X, Y, Z or I for camera views, Right to accelerate, Left to brake before takeoff, Up or Down to zoom and Esc to close. Drag with the mouse to rotate the view. Use F to toggle the optional skybox, R to reset and Enter to toggle fullscreen. Choose **No** when asked about fullscreen to keep the view windowed.
 
 ```powershell
-.\bin\primero\Debug\primero.exe
-.\bin\taller4\Debug\taller4.exe
-.\bin\taller5a\Debug\taller5a.exe
-.\bin\taller5b\Debug\taller5b.exe
-.\bin\taller6\Debug\taller6.exe
+.\bin\primero\Release\primero.exe
+.\bin\taller4\Release\taller4.exe
+.\bin\taller5a\Release\taller5a.exe
+.\bin\taller5b\Release\taller5b.exe
+.\bin\taller6\Release\taller6.exe
 
-Push-Location .\bin\segundo\Debug
-New-Item debug -ItemType Directory -Force
-Copy-Item ..\..\..\demo\avion.3ds .\debug\
+Push-Location .\bin\segundo\Release
+Copy-Item ..\..\..\vendor\runtime\*.dll .
+Copy-Item ..\..\..\demo\* .
 .\segundo.exe
 Pop-Location
 ```
@@ -92,7 +92,7 @@ The MIT license applies to the original exercise code and the 2026 build files a
 ## Español
 
 
-Ejercicios C++ para dibujar con OpenGL y ver un modelo 3DS en Windows
+Ejercicios históricos de C++ para dibujar, animar y mostrar escenas 3D con OpenGL en Windows
 
 > [!WARNING]
 > **Estado: Legacy (histórico).** Ejercicios para Windows de 2011, convertidos a MSVC v145 en 2026.
@@ -110,8 +110,6 @@ Estos ejercicios de Windows muestran cómo un programa de C++ convierte coordena
 - **`taller6`** · Una demostración que anima el desplazamiento, el giro y la escala de un triángulo.
 - **`segundo`** · Un visor de una aeronave 3DS con varias cámaras, controles de teclado e indicador de velocidad.
 
-En esta revisión del 29 de octubre el crédito original aparece arriba, y el indicador de velocidad, abajo. La rama histórica sin _DEBUG contiene una pregunta sobre pantalla completa. Con MSVC v145 esta revisión compila en Debug y abre en una ventana.
-
 ### Requisitos
 
 - En Windows, instala [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/) con Desarrollo para el escritorio con C++ y un SDK de Windows. Selecciona Win32.
@@ -120,28 +118,30 @@ En esta revisión del 29 de octubre el crédito original aparece arriba, y el in
 - El cargador y los módulos auxiliares están incluidos en `segundo/`. Consulta los [avisos de terceros](THIRD-PARTY-NOTICES.md) para conocer sus condiciones.
 
 
+El cielo de octubre usa las seis texturas BMP ficticias de demo/. Ya se incluyen todos los archivos del cielo.
+
 ### Cómo empezar
 
 Compila la solución desde la raíz en Developer PowerShell para Visual Studio.
 
 ```powershell
-MSBuild OpenGLExercises.sln /m:1 /t:Rebuild /p:Configuration=Debug /p:Platform=Win32 /p:PreferredToolArchitecture=x64
+MSBuild OpenGLExercises.sln /m:1 /t:Rebuild /p:Configuration=Release /p:Platform=Win32 /p:PreferredToolArchitecture=x64
 ```
 
 ### Uso
 
-Presiona Enter en la consola para `primero` o cualquier tecla en la consola para `taller4`. Usa el botón de cerrar en las demás ventanas. Compila en Debug. Las definiciones archivadas de las macros Trace para Release fallan con MSVC v145. Con las DLL en su sitio, usa el modelo 3DS sintético incluido. Pulsa X, Y, Z o I para cambiar de cámara, derecha para acelerar, izquierda para frenar antes de despegar, arriba o abajo para cambiar el zoom y Esc para salir. Arrastra con el ratón para girar la vista.
+Presiona Enter en la consola para `primero` o cualquier tecla en la consola para `taller4`. Usa el botón de cerrar en las demás ventanas. Con las DLL en su sitio, usa el modelo 3DS sintético incluido. Pulsa X, Y, Z o I para cambiar de cámara, derecha para acelerar, izquierda para frenar antes de despegar, arriba o abajo para cambiar el zoom y Esc para salir. Arrastra con el ratón para girar la vista. Pulsa F para alternar el cielo opcional, R para reiniciar y Enter para alternar la pantalla completa. Selecciona **No** en la pregunta de pantalla completa para seguir en una ventana.
 
 ```powershell
-.\bin\primero\Debug\primero.exe
-.\bin\taller4\Debug\taller4.exe
-.\bin\taller5a\Debug\taller5a.exe
-.\bin\taller5b\Debug\taller5b.exe
-.\bin\taller6\Debug\taller6.exe
+.\bin\primero\Release\primero.exe
+.\bin\taller4\Release\taller4.exe
+.\bin\taller5a\Release\taller5a.exe
+.\bin\taller5b\Release\taller5b.exe
+.\bin\taller6\Release\taller6.exe
 
-Push-Location .\bin\segundo\Debug
-New-Item debug -ItemType Directory -Force
-Copy-Item ..\..\..\demo\avion.3ds .\debug\
+Push-Location .\bin\segundo\Release
+Copy-Item ..\..\..\vendor\runtime\*.dll .
+Copy-Item ..\..\..\demo\* .
 .\segundo.exe
 Pop-Location
 ```
