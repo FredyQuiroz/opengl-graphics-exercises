@@ -7,11 +7,31 @@
 Legacy Windows C++ exercises for drawing, animating and rendering 3D scenes with OpenGL
 
 > [!WARNING]
-> **Status: Legacy.** Windows exercises from 2011. Converted to MSVC v145 in 2026.
+> **Status: Legacy.** Windows exercises from 2011. Converted to MSVC v145 in 2026. Verified on 2026-11-19.
 
 ### Overview
 
 These Windows exercises show how a C++ program turns coordinates into pixels with OpenGL. They form a progression from drawing lines and filled shapes to comparing transformations and animation. The 3DS exercise opens a model made of faces and vertices from a separate 3DS file.
+
+### Screenshots
+
+![A triangle drawn over lines radiating from the center](docs/media/radial-lines.png)
+
+
+![Grid with outlines, points and polygons drawn on the black background](docs/media/primitive-grid.png)
+
+
+![Colored shapes arranged on a perspective view](docs/media/perspective.png)
+
+
+![Triangle copies move and rotate in the animation exercise](docs/media/animated-transformations.gif)
+
+
+![Synthetic aircraft viewed from the side in the 3DS exercise](docs/media/synthetic-aircraft.png)
+
+
+![Runway and textured horizon with the original author credit](docs/media/textured-runway.png)
+
 
 ### Features
 
@@ -69,6 +89,7 @@ Pop-Location
 - `taller6/` · A triangle demonstration that animates translation, rotation and scaling. Start with `taller6/main.cpp`.
 - `segundo/` · A 3DS aircraft viewer with several cameras, keyboard input and a speed display. Start with `segundo/main.cpp`.
 - `demo/` · Synthetic files for the 3DS exercise, starting with `demo/avion.3ds`.
+- `docs/` · Captures of the running exercises in `docs/media/`.
 - `LICENSES/` · License texts for the 3DS loader and the BSD text helpers.
 
 ### Contributing
@@ -83,6 +104,35 @@ Use the [issue tracker](https://github.com/FredyQuiroz/opengl-graphics-exercises
 
 The 2011 revisions preserve the recovered C++ and Visual C++ projects. The dates use the calendar day of each archived `main.cpp`, with noon UTC as a reference because the archive has no timezone. The 2026 reconstruction adds the v145 projects, the root solution and per-exercise output directories. It adds the legacy CRT import definitions and uses x86 linking without SafeSEH metadata because the archived GLAUX objects predate it.
 
+### Verification
+
+Tested on 2026-11-19 with Windows 11, Visual Studio Community 18.11.4, MSVC 14.51.36263 (v145), MSBuild 18.11.1.51303 and apitrace 14.0 (Win32). The figures retain the actual output from the separately archived display runs. The current executable was also tested for each commit.
+
+The exact build command for this revision was `MSBuild OpenGLExercises.sln /m:1 /t:Rebuild /p:Configuration=Release /p:Platform=Win32 /p:PreferredToolArchitecture=x64`.
+
+Built, opened and closed `primero`, `taller4`, `taller5a`, `taller5b`, `taller6`, `segundo`. Replayed the real OpenGL calls to confirm visible drawing. The 3DS exercise opened the included synthetic model with the archived SDKs included here. The runway capture shows the included skybox and retains the full original author credit, speed and frame counter.
+
+Run the exact executable commands in [Usage](#usage). This records and replays the first exercise from its executable directory. Press Enter to close. In the other traces, select the call number of the last flush or the relevant buffer swap from the dump.
+
+```powershell
+apitrace trace --api gl --output primero.trace .\primero.exe
+apitrace dump --color=never primero.trace
+apitrace replay --headless --snapshot-format=PNG --snapshot=263 --snapshot-prefix=radial- primero.trace
+```
+
+Per-revision results in recovery order.
+
+- 2011-09-12 · Draw radial lines behind a triangle · `Win32 | Release` · compiled and ran
+- 2011-09-12 · Add a grid-based drawing exercise · `Win32 | Release` · compiled and ran
+- 2011-09-21 · Compare perspectives in exercises 5A and 5B · `Win32 | Release` · compiled and ran
+- 2011-10-06 · Animate a triangle with model transformations · `Win32 | Release` · compiled and ran
+- 2011-10-29 · View a 3DS model from keyboard-controlled cameras · `Win32 | Debug` · compiled and ran
+- 2011-10-29 · Show a label with optional fullscreen at startup · `Win32 | Debug` · compiled and ran
+- 2011-10-30 · Add a textured sky over the existing runway · `Win32 | Release` · compiled and ran
+- 2026-11-18 · Document the recovered exercises with real captures · `Win32 | Release` · compiled and ran
+
+The rendered output is in [Screenshots](#screenshots).
+
 ### License
 
 The MIT license applies to the original exercise code and the 2026 build files and demo assets. The [third-party notices](THIRD-PARTY-NOTICES.md) record LGPL for the loader and BSD for the accompanying modules. See [LICENSE](LICENSE).
@@ -95,11 +145,25 @@ The MIT license applies to the original exercise code and the 2026 build files a
 Ejercicios históricos de C++ para dibujar, animar y mostrar escenas 3D con OpenGL en Windows
 
 > [!WARNING]
-> **Estado: Legacy (histórico).** Ejercicios para Windows de 2011, convertidos a MSVC v145 en 2026.
+> **Estado: Legacy (histórico).** Ejercicios para Windows de 2011, convertidos a MSVC v145 en 2026. Verificados el 2026-11-19.
 
 ### Descripción general
 
 Estos ejercicios de Windows muestran cómo un programa de C++ convierte coordenadas en píxeles con OpenGL. Van del dibujo de líneas y formas rellenas a la comparación de transformaciones y la animación. El ejercicio 3DS abre un archivo que define un modelo a partir de caras y vértices.
+
+### Capturas
+
+![Un triángulo sobre líneas que salen del centro](docs/media/radial-lines.png)
+
+![Cuadrícula sobre fondo negro que contiene contornos, puntos y polígonos](docs/media/primitive-grid.png)
+
+![Figuras de colores dispuestas en una vista en perspectiva](docs/media/perspective.png)
+
+![Copias del triángulo se desplazan y giran en el ejercicio de animación](docs/media/animated-transformations.gif)
+
+![Aeronave sintética vista de lado en el ejercicio 3DS](docs/media/synthetic-aircraft.png)
+
+![Pista y horizonte con textura y el crédito original del autor](docs/media/textured-runway.png)
 
 ### Funciones
 
@@ -157,6 +221,7 @@ Pop-Location
 - `taller6/` · Una demostración que anima el desplazamiento, el giro y la escala de un triángulo. Empieza en `taller6/main.cpp`.
 - `segundo/` · Un visor de una aeronave 3DS con varias cámaras, controles de teclado e indicador de velocidad. Empieza en `segundo/main.cpp`.
 - `demo/` · Archivos inventados del ejercicio 3DS, empezando por `demo/avion.3ds`.
+- `docs/` · Capturas de los ejercicios en ejecución en `docs/media/`.
 - `LICENSES/` · Textos de licencia del cargador 3DS y los auxiliares BSD.
 
 ### Contribuir
@@ -170,6 +235,35 @@ Usa el [registro de problemas](https://github.com/FredyQuiroz/opengl-graphics-ex
 ### Historial
 
 Las revisiones de 2011 conservan el C++ y los proyectos de Visual C++ recuperados. Cada fecha usa el día de su `main.cpp` archivado y las 12:00 UTC como referencia porque el respaldo carece de zona horaria. La reconstrucción de 2026 agrega los proyectos v145, la solución en la raíz y salidas por ejercicio. Agrega las definiciones antiguas de la biblioteca de C y enlaza en x86 sin los metadatos SafeSEH porque los objetos archivados de GLAUX son anteriores.
+
+### Verificación
+
+Pruebas del 2026-11-19 con Windows 11, Visual Studio Community 18.11.4, MSVC 14.51.36263 (v145), MSBuild 18.11.1.51303 y apitrace 14.0 (Win32). Las figuras conservan la salida de las ejecuciones de captura archivadas. También se ejecutó el programa de cada commit actual.
+
+El comando exacto de esta revisión fue `MSBuild OpenGLExercises.sln /m:1 /t:Rebuild /p:Configuration=Release /p:Platform=Win32 /p:PreferredToolArchitecture=x64`.
+
+Se compilaron, abrieron y cerraron `primero`, `taller4`, `taller5a`, `taller5b`, `taller6`, `segundo`. Se reprodujeron las llamadas OpenGL reales para comprobar el dibujo. El ejercicio 3DS abrió el modelo sintético incluido con los SDK históricos incluidos. La captura de la pista muestra el cielo incluido y conserva el crédito original completo, la velocidad y el contador de cuadros.
+
+Ejecuta los comandos de [Uso](#uso). Esta prueba graba y reproduce el primer ejercicio desde su carpeta de salida. Presiona Enter para cerrar. En las demás trazas, toma del listado el número de llamada del vaciado final o del intercambio de búfer que quieres capturar.
+
+```powershell
+apitrace trace --api gl --output primero.trace .\primero.exe
+apitrace dump --color=never primero.trace
+apitrace replay --headless --snapshot-format=PNG --snapshot=263 --snapshot-prefix=radial- primero.trace
+```
+
+Resultados por revisión en el orden recuperado.
+
+- 2011-09-12 · Dibujar líneas radiales y un triángulo en la primera ventana · `Win32 | Release` · compiló y funcionó
+- 2011-09-12 · Añadir un ejercicio de dibujo sobre una cuadrícula · `Win32 | Release` · compiló y funcionó
+- 2011-09-21 · Comparar formas de colores y líneas radiales trasladadas · `Win32 | Release` · compiló y funcionó
+- 2011-10-06 · Animar un triángulo con transformaciones · `Win32 | Release` · compiló y funcionó
+- 2011-10-29 · Abrir un modelo 3DS y cambiar de cámara con el teclado · `Win32 | Debug` · compiló y funcionó
+- 2011-10-29 · Añadir un rótulo y la opción de pantalla completa · `Win32 | Debug` · compiló y funcionó
+- 2011-10-30 · Añadir un cielo con texturas sobre la pista existente · `Win32 | Release` · compiló y funcionó
+- 2026-11-18 · Documentar la compilación y la demostración de OpenGL · `Win32 | Release` · compiló y funcionó
+
+El resultado gráfico está en [Capturas](#capturas).
 
 ### Licencia
 
